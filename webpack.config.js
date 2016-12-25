@@ -7,15 +7,20 @@ var path = require('path');
 
 module.exports = {
     context: path.join(__dirname, '/src'),
-    entry: './phone-catalog.js',
+    entry: './app.js',
     watch: true,
     output: {
         path: path.join(__dirname, '/app'),
         publicPath: '/',
         filename: 'build.js'
     },
+    devtool: 'source-map-inline',
     module: {
         loaders: [
+            {
+                test: /\.html/,
+                loader: 'raw-loader'
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/, loader: 'ng-annotate!babel'

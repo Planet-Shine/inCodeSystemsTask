@@ -59,7 +59,7 @@
     "angular-resource": "^1.5.0",
     "angular-sanitize": "^1.5.0",
     "angular-touch": "^1.5.0",
-    "angular-ui-router": "^0.2.18",
+    "angular-ui-router": "^1.0.0-beta.1",
     "babel-polyfill": "^6.5.0",
     "bootstrap": "^3.3.7",
     "bourbon": "^4.2.6",
@@ -68,6 +68,7 @@
     "gsap": "^1.18.2",
     "ismobilejs": "^0.3.9",
     "normalize.css": "^3.0.3",
+    "raw-loader": "^0.5.1",
     "ua-parser-js": "^0.7.10"
   },
   "scripts": {
