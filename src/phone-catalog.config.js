@@ -1,6 +1,6 @@
 import phoneCatalogModule from './phone-catalog.js';
 
-phoneCatalogModule.config(['$stateProvider', '$urlRouterProvider',  function ($stateProvider, $urlRouterProvider) {
+phoneCatalogModule.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     const phoneListState = {
         name: 'phones',
         url: '/phones',
@@ -22,4 +22,9 @@ phoneCatalogModule.config(['$stateProvider', '$urlRouterProvider',  function ($s
         .state(phoneListState)
         .state(phoneDetailsState);
     $urlRouterProvider.otherwise('/phones');
+}]);
+
+
+phoneCatalogModule.config(['$resourceProvider', function ($resourceProvider) {
+    $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);

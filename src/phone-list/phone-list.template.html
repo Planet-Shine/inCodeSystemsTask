@@ -1,25 +1,29 @@
 <div class="container">
     <div class="col-lg-3 col-md-4 col-sm-6">
-        <hierarchic-categories></hierarchic-categories>
+        <hierarchic-categories class="categories-box"></hierarchic-categories>
     </div>
-    <div class="page-header jumbotron col-lg-9 col-md-8 col-sm-6">
-        <h1>Mobile phones</h1>
-        <ul class="row">
-            <li class="col-lg-3 col-md-4 col-sm-6">
+    <div class="col-lg-9 col-md-8 col-sm-6">
+        <div class="page-header jumbotron">
+            <h2>Mobile phones</h2>
+        </div>
+        <ul>
+            <li class="col-lg-4 col-md-6"
+                ng-repeat="phone in $ctrl.phones">
                 <div class="thumbnail">
-                    <img alt="Phone" class="avatar-image" data-ng-src="">
+                    <img alt="{{phone.name}}" class="phone-image" data-ng-src="{{phone.imageUrl}}" />
                     <div class="caption">
-                        <h3>
-                            <a href="#">
-                                Motorola XOOM™ with Wi-Fi
+                        <h3 class="phone-caption">
+                            <a href="#" alt="{{phone.name}}">
+                                {{phone.name}}
                             </a>
                         </h3>
-                        <p>
-                            The Next, Next Generation
-                            Experience the future with Motorola XOOM with
-                            Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb).
+                        <p class="phone-description">
+                            {{phone.snippet}}
                         </p>
-                        <p>
+                        <p class="center-text-aligin">
+                            <a href="#" class="btn btn-default" role="button">
+                                Detail
+                            </a>
                             <a href="#" class="btn btn-primary" role="button">
                                 Claim
                             </a>
