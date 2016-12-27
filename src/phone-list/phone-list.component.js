@@ -6,8 +6,8 @@ export default phoneListModule
         template: require('./phone-list.template.html'),
         controller: ['Phone', function (Phone) {
             Phone.loadAll();
-            
             this.phones = Phone.phones;
+            
         }]
     });
 

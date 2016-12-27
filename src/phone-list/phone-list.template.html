@@ -3,17 +3,16 @@
         <hierarchic-categories class="categories-box"></hierarchic-categories>
     </div>
     <div class="col-lg-9 col-md-8 col-sm-6">
-        <div class="page-header jumbotron">
-            <h2>Mobile phones</h2>
-        </div>
         <ul>
             <li class="col-lg-4 col-md-6"
                 ng-repeat="phone in $ctrl.phones">
                 <div class="thumbnail">
-                    <img alt="{{phone.name}}" class="phone-image" data-ng-src="{{phone.imageUrl}}" />
+                    <a ui-sref="phone({phoneId: phone.id})" alt="{{phone.name}}">
+                        <img alt="{{phone.name}}" class="phone-image" data-ng-src="{{phone.imageUrl}}" />
+                    </a>
                     <div class="caption">
                         <h3 class="phone-caption">
-                            <a href="#" alt="{{phone.name}}">
+                            <a ui-sref="phone({phoneId: phone.id})" alt="{{phone.name}}">
                                 {{phone.name}}
                             </a>
                         </h3>
@@ -21,10 +20,12 @@
                             {{phone.snippet}}
                         </p>
                         <p class="center-text-aligin">
-                            <a href="#" class="btn btn-default" role="button">
-                                Detail
+                            <a ui-sref="phone({phoneId: phone.id})" class="btn btn-default" role="button">
+                                Details
                             </a>
-                            <a href="#" class="btn btn-primary" role="button">
+                            <a href="javascript:void(0);"
+                               class="btn btn-primary"
+                               role="button">
                                 Claim
                             </a>
                         </p>
