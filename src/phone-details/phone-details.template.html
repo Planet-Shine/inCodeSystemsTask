@@ -2,177 +2,158 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">MobilePhones</a>
+                <div class="navbar-brand">
+                    MobilePhones
+                </div>
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#">К списку</a>
+                    <li>
+                        <a ui-sref="phones">
+                            К списку
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="col-sm-6 col-md-4 col-lg-3"> // Слайдшоу и описание
-        <img alt="..." ng-src="null" />
-        <button type="button" class="btn btn-default">
-            Left
-        </button>
-        <button type="button" class="btn btn-default">
-            Right
-        </button>
-    </div>
-    <div class="media"> // Полное описание
-        <div class="media-body">
-            <h4 class="media-heading">
-                Motorola XOOM™ with Wi-Fi
-            </h4>
-            <p>
-                Motorola XOOM with Wi-Fi has a super-powerful dual-core processor and Android™ 3.0 (Honeycomb)
-                — the Android platform designed specifically for tablets. With its 10.1-inch HD widescreen display,
-                you’ll enjoy HD video in a thin, light, powerful and upgradeable tablet.
-            </p>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="phone-images">
+            <img class="phone"
+                 ng-src="{{$ctrl.mainImage.src}}" />
+            <div class="center-text-aligin">
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="$ctrl.previousPhoto()">
+                    Previous
+                </button>
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="$ctrl.nextPhoto()">
+                    Next
+                </button>
+            </div>
+            <ul class="gallery">
+                <li ng-class="{selected : image === $ctrl.mainImage.src}" ng-repeat="image in $ctrl.phone.images">
+                    <img class="phone"
+                         ng-src="{{image}}"
+                         ng-click="$ctrl.mainImage.src = image"/>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class="">
-        <div class="col-lg-3">
-            <h4>Емкость</h4>
-            <p>
-                Хорошая
-            </p>
-            <h5>Емкость 2x</h5>
-            <p>
-                Нормально
-            </p>
-        </div>
-        <div class="col-lg-3">
-            <h4>Connectivity</h4>
-            <p>
-                Network Support
-            </p>
-            <h5>
-                WiFi
-            </h5>
-            <p>
-                802.11 b/g/n
-                Bluetooth
-                Bluetooth 2.1
-            </p>
-            <h5>
-                Infrared
-            </h5>
-            <p>✘</p>
-            <h5>
-                GPS
-            </h5>
-            <p>✓</p>
-        </div>
-        <div class="col-lg-3">
-            <h4>Емкость</h4>
-            <p>
-                Хорошая
-            </p>
-            <h5>Емкость 2x</h5>
-            <p>
-                Нормально
-            </p>
-        </div>
-        <div class="col-lg-3">
-            <h4>Connectivity</h4>
-            <p>
-                Network Support
-            </p>
-            <h5>
-                WiFi
-            </h5>
-            <p>
-                802.11 b/g/n
-                Bluetooth
-                Bluetooth 2.1
-            </p>
-            <h5>
-                Infrared
-            </h5>
-            <p>✘</p>
-            <h5>
-                GPS
-            </h5>
-            <p>✓</p>
-        </div>
-        <div class="col-lg-3">
-            <h4>Емкость</h4>
-            <p>
-                Хорошая
-            </p>
-            <h5>Емкость 2x</h5>
-            <p>
-                Нормально
-            </p>
-        </div>
-        <div class="col-lg-3">
+    <div class="col-sm-6 col-md-8 col-lg-9">
+        <h4 class="media-heading">
+            {{$ctrl.phone.name}}
+            <a href="javascript:void(0);"
+               class="btn btn-primary"
+               role="button">
+                Claim
+            </a>
+        </h4>
+        <p>
+            {{$ctrl.phone.description}}
+        </p>
 
-        </div>
-        <div class="col-lg-3">
-            <h4>Емкость</h4>
-            <p>
-                Хорошая
-            </p>
-            <h5>Емкость 2x</h5>
-            <p>
-                Нормально
-            </p>
-        </div>
-        <div class="col-lg-3">
-            <h4>Connectivity</h4>
-            <p>
-                Network Support
-            </p>
-            <h5>
-                WiFi
-            </h5>
-            <p>
-                802.11 b/g/n
-                Bluetooth
-                Bluetooth 2.1
-            </p>
-            <h5>
-                Infrared
-            </h5>
-            <p>✘</p>
-            <h5>
-                GPS
-            </h5>
-            <p>✓</p>
-        </div>
-        <div class="col-lg-3">
-            <h4>Емкость</h4>
-            <p>
-                Хорошая
-            </p>
-            <h5>Емкость 2x</h5>
-            <p>
-                Нормально
-            </p>
-        </div>
-        <div class="col-lg-3">
-            <h4>Connectivity</h4>
-            <p>
-                Network Support
-            </p>
-            <h5>
-                WiFi
-            </h5>
-            <p>
-                802.11 b/g/n
-                Bluetooth
-                Bluetooth 2.1
-            </p>
-            <h5>
-                Infrared
-            </h5>
-            <p>✘</p>
-            <h5>
-                GPS
-            </h5>
-            <p>✓</p>
-        </div>
+        <ul class="specs">
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Availability and Networks</span>
+                <dl>
+                    <dt>Availability</dt>
+                    <dd ng-repeat="availability in $ctrl.phone.availability">{{availability}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Battery</span>
+                <dl>
+                    <dt>Type</dt>
+                    <dd>{{$ctrl.phone.battery.type}}</dd>
+                    <dt>Talk Time</dt>
+                    <dd>{{$ctrl.phone.battery.talkTime}}</dd>
+                    <dt>Standby time (max)</dt>
+                    <dd>{{$ctrl.phone.battery.standbyTime}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Storage and Memory</span>
+                <dl>
+                    <dt>RAM</dt>
+                    <dd>{{$ctrl.phone.storage.ram}}</dd>
+                    <dt>Internal Storage</dt>
+                    <dd>{{$ctrl.phone.storage.flash}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Connectivity</span>
+                <dl>
+                    <dt>Network Support</dt>
+                    <dd>{{$ctrl.phone.connectivity.cell}}</dd>
+                    <dt>WiFi</dt>
+                    <dd>{{$ctrl.phone.connectivity.wifi}}</dd>
+                    <dt>Bluetooth</dt>
+                    <dd>{{$ctrl.phone.connectivity.bluetooth}}</dd>
+                    <dt>Infrared</dt>
+                    <dd>{{$ctrl.phone.connectivity.infrared | checkmark}}</dd>
+                    <dt>GPS</dt>
+                    <dd>{{$ctrl.phone.connectivity.gps | checkmark}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Android</span>
+                <dl>
+                    <dt>OS Version</dt>
+                    <dd>{{$ctrl.phone.android.os}}</dd>
+                    <dt>UI</dt>
+                    <dd>{{$ctrl.phone.android.ui}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Size and Weight</span>
+                <dl>
+                    <dt>Dimensions</dt>
+                    <dd ng-repeat="dim in $ctrl.phone.sizeAndWeight.dimensions">{{dim}}</dd>
+                    <dt>Weight</dt>
+                    <dd>{{$ctrl.phone.sizeAndWeight.weight}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Display</span>
+                <dl>
+                    <dt>Screen size</dt>
+                    <dd>{{$ctrl.phone.display.screenSize}}</dd>
+                    <dt>Screen resolution</dt>
+                    <dd>{{$ctrl.phone.display.screenResolution}}</dd>
+                    <dt>Touch screen</dt>
+                    <dd>{{$ctrl.phone.display.touchScreen | checkmark}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Hardware</span>
+                <dl>
+                    <dt>CPU</dt>
+                    <dd>{{$ctrl.phone.hardware.cpu}}</dd>
+                    <dt>USB</dt>
+                    <dd>{{$ctrl.phone.hardware.usb}}</dd>
+                    <dt>Audio / headphone jack</dt>
+                    <dd>{{$ctrl.phone.hardware.audioJack}}</dd>
+                    <dt>FM Radio</dt>
+                    <dd>{{$ctrl.phone.hardware.fmRadio | checkmark}}</dd>
+                    <dt>Accelerometer</dt>
+                    <dd>{{$ctrl.phone.hardware.accelerometer | checkmark}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Camera</span>
+                <dl>
+                    <dt>Primary</dt>
+                    <dd>{{$ctrl.phone.camera.primary}}</dd>
+                    <dt>Features</dt>
+                    <dd>{{$ctrl.phone.camera.features.join(', ')}}</dd>
+                </dl>
+            </li>
+            <li class="col-sm-6 col-md-4 col-lg-3">
+                <span>Additional Features</span>
+                <dd>{{$ctrl.phone.additionalFeatures}}</dd>
+            </li>
+        </ul>
     </div>
+
 </div>

@@ -11,10 +11,9 @@ phoneCatalogModule.config(['$stateProvider', '$urlRouterProvider', function ($st
         url: '/phone/{phoneId}',
         component: 'phoneDetails',
         resolve: {
-            phoneId: function () {
-                // $stateParams.phoneId;
-                return 1;
-            }
+            phoneId: ['$stateParams', function ($stateParams) {
+                return $stateParams.phoneId;
+            }]
         }
     };
 
