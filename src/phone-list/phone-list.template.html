@@ -1,37 +1,37 @@
-<div class="container">
-    <div class="col-lg-3 col-md-4 col-sm-6">
-        <hierarchic-categories class="categories-box"></hierarchic-categories>
-    </div>
-    <div class="col-lg-9 col-md-8 col-sm-6">
-        <ul>
-            <li class="col-lg-4 col-md-6"
-                ng-repeat="phone in $ctrl.phones">
-                <div class="thumbnail">
-                    <a ui-sref="phone({phoneId: phone.id})" alt="{{phone.name}}">
-                        <img alt="{{phone.name}}" class="phone-image" data-ng-src="{{phone.imageUrl}}" />
-                    </a>
-                    <div class="caption">
-                        <h3 class="phone-caption">
-                            <a ui-sref="phone({phoneId: phone.id})" alt="{{phone.name}}">
-                                {{phone.name}}
-                            </a>
-                        </h3>
-                        <p class="phone-description">
-                            {{phone.snippet}}
-                        </p>
-                        <p class="center-text-aligin">
-                            <a ui-sref="phone({phoneId: phone.id})" class="btn btn-default" role="button">
-                                Details
-                            </a>
-                            <a href="javascript:void(0);"
-                               class="btn btn-primary"
-                               role="button">
-                                Claim
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <hierarchic-categories class="categories-box"></hierarchic-categories>
 </div>
+<div class="col-lg-9 col-md-8 col-sm-6">
+    <ul>
+        <li class="col-lg-4 col-md-6"
+            ng-repeat="phone in $ctrl.phones">
+            <div class="thumbnail">
+                <a ui-sref="phone({phoneId: phone.id})" alt="{{phone.name}}">
+                    <img alt="{{phone.name}}" class="phone-image" data-ng-src="{{phone.imageUrl}}" />
+                </a>
+                <div class="caption">
+                    <h3 class="phone-caption">
+                        <a ui-sref="phone({phoneId: phone.id})" alt="{{phone.name}}">
+                            {{phone.name}}
+                        </a>
+                    </h3>
+                    <p class="phone-description">
+                        {{phone.snippet}}
+                    </p>
+                    <p class="center-text-aligin">
+                        <a ui-sref="phone({phoneId: phone.id})" class="btn btn-default" role="button">
+                            Details
+                        </a>
+                        <a href="javascript:void(0);"
+                           class="btn btn-primary"
+                           role="button">
+                            Claim
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+

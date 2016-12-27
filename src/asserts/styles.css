@@ -160,7 +160,7 @@ body {
 @media (min-width: 768px) {
     .categories-box {
         position: fixed;
-        top: 20px;
+        top: 90px;
     }
 }
 .phone-images {
@@ -170,6 +170,7 @@ body {
 }
 .gallery {
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 .gallery li {
     padding: 5px;
@@ -184,11 +185,17 @@ body {
 .gallery li.selected {
     border: 1px solid #0000AA;
 }
+.specs {
+    padding-bottom: 30px;
+}
 .specs span{
     font-size: 20px;
     font-weight: bold;
 }
 .specs li{
     padding-top: 10px;
+}
+.navbar-mobile-phones {
+    margin-top: 20px;
 }
 /* End styles*/

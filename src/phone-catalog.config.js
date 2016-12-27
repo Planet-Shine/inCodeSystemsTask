@@ -4,13 +4,38 @@ phoneCatalogModule.config(['$stateProvider', '$urlRouterProvider', function ($st
     const phoneListState = {
         name: 'phones',
         url: '/phones',
-        component: 'phoneList'
+        views: {
+            '': {
+                component: 'phoneList'
+            },
+            'header': {
+                component: 'header',
+                bindings: { state: 'stateResolving' }
+            }
+        },
+        resolve: {
+            state: function () {
+                return 'phones';
+            }
+        }
     };
     const phoneDetailsState = {
         name: 'phone',
         url: '/phone/{phoneId}',
-        component: 'phoneDetails',
+        views: {
+            '': {
+                component: 'phoneDetails',
+                bindings: { phoneId: 'phoneId' }
+            },
+            'header': {
+                component: 'header',
+                bindings: { state: 'state' }
+            }
+        },
         resolve: {
+            state: function () {
+                return 'phone';
+            },
             phoneId: ['$stateParams', function ($stateParams) {
                 return $stateParams.phoneId;
             }]
