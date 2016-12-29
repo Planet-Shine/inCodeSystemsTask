@@ -29,7 +29,8 @@
         {{$ctrl.phone.name}}
         <a href="javascript:void(0);"
            class="btn btn-primary"
-           role="button">
+           role="button"
+           ng-click="$ctrl.openClaimForm($ctrl.phone.id)">
             Claim
         </a>
     </h4>

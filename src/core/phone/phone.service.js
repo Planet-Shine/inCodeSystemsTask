@@ -30,6 +30,11 @@ export default (corePhoneModule) => {
                         });
                         // console.log(Restangular.one('phones').get().$object);
                         // Object.assign(this.phone);
+                    },
+                    getItemById: function (phoneId) {
+                        return this.phones
+                            .concat([this.phone])
+                            .find(phone => phone.id === phoneId);
                     }
                 };
             }

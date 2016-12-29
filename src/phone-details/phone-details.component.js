@@ -7,7 +7,7 @@ export default phoneDetailsModule
             phoneId: '<'
         },
         template: require('./phone-details.template.html'),
-        controller: ['Phone', '$scope', function (Phone, $scope) {
+        controller: ['Phone', '$scope', 'PhoneClaimForm', function (Phone, $scope, PhoneClaimForm) {
             this.onPhoneIdChanges = (newValue) => {
                 if (newValue) {
                     Phone.loadById(this.phoneId);
@@ -29,6 +29,10 @@ export default phoneDetailsModule
                     }
                     this.mainImage.src = this.phone.images[index];
                 }
+            };
+
+            this.openClaimForm = (phoneId) => {
+                PhoneClaimForm.open(phoneId);
             };
 
             this.previousPhoto = () => {

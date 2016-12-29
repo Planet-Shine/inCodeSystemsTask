@@ -1,43 +1,81 @@
-<div class="container">
-    <div class="btn-toolbar">
-        <button class="btn btn-default" type="button">
-            Close
+<div ng-show="$ctrl.formState.isOpened" class="popup-wrapper">
+    <div class="popup-box col-lg-4 col-md-4 col-sm-6 col-xs-8">
+        <button type="button"
+                class="btn btn-default btn-close btn-md"
+                ng-click="$ctrl.closeForm()">
+            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
         </button>
-    </div>
-    <br />
-    <form>
-        <h4>Claim for Motorolla</h4>
-        <div>
-            <label for="customer-name">Name</label>
-            <div class="input-group">
+        <form name="claimForm" ng-submit="$ctrl.onSubmit(claimForm.$valid)" novalidate>
+            <h2>
+                Claim for {{ $ctrl.phoneName }}
+            </h2>
+            <div class="form-field">
+                <label for="customer-name">Name</label>
                 <input type="text"
+                       ng-model="$ctrl.user.name"
                        class="form-control"
-                       id="customer-name">
+                       name="uName"
+                       id="customer-name"
+                       required=""/>
+                <div class="error-message" ng-show="$ctrl.$submitted">
+                    <div ng-show="claimForm.uName.$error.required">
+                        Name is required.
+                    </div>
+                </div>
             </div>
-        </div>
-        <div>
-            <label for="customer-email">Email</label>
-            <div class="input-group">
-                <input type="text" class="form-control" id="customer-email">
+            <div class="form-field">
+                <label for="customer-email">Email</label>
+                <input type="email"
+                       ng-model="$ctrl.user.email"
+                       class="form-control"
+                       name="uEmail"
+                       id="customer-email"
+                       required=""/>
+                <div class="error-message" ng-show="$ctrl.$submitted">
+                    <div ng-show="claimForm.uEmail.$error.required">
+                        Email is required.
+                    </div>
+                    <div ng-show="claimForm.uEmail.$error.email">
+                        Email is't valid.
+                    </div>
+                </div>
             </div>
-        </div>
-        <div>
-            <label for="customer-address">Address</label>
-            <div class="input-group">
-                <input type="text" class="form-control" id="customer-address">
+            <div class="form-field">
+                <label for="customer-address">Address</label>
+                <input type="text"
+                       ng-model="$ctrl.user.address"
+                       class="form-control"
+                       name="uAddress"
+                       id="customer-address"
+                       address-autocomplete />
             </div>
-        </div>
-        <div>
-            <label for="customer-vk-url">VK page url</label>
-            <div class="input-group">
-                <input type="text" class="form-control" id="customer-vk-url">
+            <div class="form-field">
+                <label for="customer-vk-url">Personal VK page url</label>
+                <input type="text"
+                       ng-model="$ctrl.user.vkUrl"
+                       ng-pattern="$ctrl.vkValidationRegExp"
+                       class="form-control"
+                       name="uVkUrl"
+                       id="customer-vk-url" />
+                <div class="error-message"
+                     ng-show="claimForm.$submitted || claimForm.uVkUrl.$touched">
+                    <div ng-show="!claimForm.uVkUrl.$valid">
+                        VK page url isn't valid.
+                    </div>
+                </div>
             </div>
-        </div>
-        <br />
-        <div class="btn-toolbar">
-            <button class="btn btn-default" type="submit">
-                Send
-            </button>
-        </div>
-    </form>
+            <br />
+            <div class="text-align-right">
+                <button class="btn btn-default" type="submit">
+                    Send
+                </button>
+            </div>
+            <div ng-show="$ctrl.failed" class="error-message">
+                Claim application failed.
+            </div>
+            <div ng-show="$ctrl.succeed" class="success-message">
+                Your claim applied.
+            </div>
+        </form>
+    </div>
 </div>
