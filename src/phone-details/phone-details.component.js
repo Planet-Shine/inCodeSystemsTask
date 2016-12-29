@@ -11,23 +11,7 @@ export default phoneDetailsModule
             this.onPhoneIdChanges = (newValue) => {
                 if (newValue) {
                     Phone.loadById(this.phoneId);
-
-                    this.mainImage = Phone.mainImage;
                     this.phone = Phone.phone;
-                }
-            };
-
-            const switchPhoto = (delta) => {
-                const currentIndex = this.phone.images.indexOf(this.mainImage.src);
-                const length = this.phone.images.length;
-                if (~currentIndex) {
-                    let index = currentIndex + delta;
-                    if (index < 0) {
-                        index = length - 1;
-                    } else if (index === length) {
-                        index = 0;
-                    }
-                    this.mainImage.src = this.phone.images[index];
                 }
             };
 
@@ -35,14 +19,6 @@ export default phoneDetailsModule
                 PhoneClaimForm.open(phoneId);
             };
 
-            this.previousPhoto = () => {
-                switchPhoto(-1);
-            };
-
-            this.nextPhoto = () => {
-                switchPhoto(1);
-            };
-
-            $scope.$watch("$ctrl.phoneId", this.onPhoneIdChanges);
+            $scope.$watch('$ctrl.phoneId', this.onPhoneIdChanges);
         }]
     });

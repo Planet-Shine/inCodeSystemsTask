@@ -1,28 +1,6 @@
 
 <div class="col-sm-6 col-md-4 col-lg-3">
-    <div class="phone-images">
-        <img class="phone"
-             ng-src="{{$ctrl.mainImage.src}}" />
-        <div class="center-text-aligin">
-            <button type="button"
-                    class="btn btn-default"
-                    ng-click="$ctrl.previousPhoto()">
-                Previous
-            </button>
-            <button type="button"
-                    class="btn btn-default"
-                    ng-click="$ctrl.nextPhoto()">
-                Next
-            </button>
-        </div>
-        <ul class="gallery">
-            <li ng-class="{selected : image === $ctrl.mainImage.src}" ng-repeat="image in $ctrl.phone.images">
-                <img class="phone"
-                     ng-src="{{image}}"
-                     ng-click="$ctrl.mainImage.src = image"/>
-            </li>
-        </ul>
-    </div>
+    <image-gallery images="$ctrl.phone.images"></image-gallery>
 </div>
 <div class="col-sm-6 col-md-8 col-lg-9">
     <h4 class="media-heading">

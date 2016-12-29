@@ -6,9 +6,6 @@ export default (corePhoneModule) => {
                 return {
                     phones: [],
                     phone: {},
-                    mainImage: {
-                        src: ''
-                    },
                     loadAll: function () {
                         this.phones = $resource('phones/:phoneId.json', {}, {
                             query: {
@@ -25,11 +22,7 @@ export default (corePhoneModule) => {
                                 params: { phoneId: 'phones' },
                                 isArray: true
                             }
-                        }).get({ phoneId: phoneId }, (phone) => {
-                            this.mainImage.src = phone.images[0];
-                        });
-                        // console.log(Restangular.one('phones').get().$object);
-                        // Object.assign(this.phone);
+                        }).get({ phoneId: phoneId });
                     },
                     getItemById: function (phoneId) {
                         return this.phones
