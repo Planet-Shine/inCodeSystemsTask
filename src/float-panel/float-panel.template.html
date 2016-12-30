@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Сategories
+    </div>
+    <div class="panel-body">
+        <div class="form-field">
+            <h4>Search by name</h4>
+            <input
+                class="form-control"
+                ng-model="$ctrl.filters.searchQuery.name" />
+        </div>
+        <div class="form-field">
+            <h4>Price</h4>
+            from <input class="form-control short-input" ng-model="$ctrl.filters.priceFrom.price" />
+            to <input class="form-control short-input" ng-model="$ctrl.filters.priceTo.price" /> $
+        </div>
+        <hierarchic-categories></hierarchic-categories>
+    </div>
+</div>

@@ -1,11 +1,17 @@
 
 <div class="col-lg-3 col-md-4 col-sm-6">
-    <hierarchic-categories class="categories-box"></hierarchic-categories>
+    <float-panel class="categories-box"></float-panel>
 </div>
 <div class="col-lg-9 col-md-8 col-sm-6">
     <ul>
+        <li class="col-lg-4 col-md-6 empty-caption" ng-show="!$ctrl.filteredPhones.length">
+            No phones
+        </li>
         <li class="col-lg-4 col-md-6"
-            ng-repeat="phone in $ctrl.phones">
+            ng-repeat="phone in ($ctrl.filteredPhones = ($ctrl.phones
+                | filter : $ctrl.filters.searchQuery : strict
+                | interval : $ctrl.filters.priceFrom : $ctrl.filters.priceTo
+                | categories : $ctrl.filters.categories))">
             <div class="thumbnail">
                 <a ui-sref="phone({phoneId: phone.id})" alt="{{phone.name}}">
                     <img alt="{{phone.name}}" class="phone-image" data-ng-src="{{phone.imageUrl}}" />
@@ -19,6 +25,9 @@
                     <p class="phone-description">
                         {{phone.snippet}}
                     </p>
+                    <h4 class="phone-price">
+                        {{phone.price}} {{{'USD': '$'}[phone.currency]}}
+                    </h4>
                     <p class="center-text-aligin">
                         <a ui-sref="phone({phoneId: phone.id})" class="btn btn-default" role="button">
                             Details

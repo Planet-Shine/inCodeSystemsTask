@@ -9,9 +9,11 @@ import './hierarchic-categories/hierarchic-categories.component';
 import './header/header.component';
 import './phone-catalog-app/phone-catalog-app.component';
 import './image-gallery/image-gallery.component';
+import './float-panel/float-panel.component';
 import './core/core.module';
 
 export default angular.module('phoneCatalog', [
+    'floatPanel',
     'imageGallery',
     'header',
     'phoneDetails',

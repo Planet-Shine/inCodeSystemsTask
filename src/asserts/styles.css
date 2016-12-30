@@ -219,6 +219,9 @@ body {
 .text-align-right {
     text-align: right;
 }
+.text-align-center {
+    text-align: center;
+}
 .btn-close {
     position: absolute;
     top: -10px;
@@ -232,5 +235,25 @@ body {
 }
 .success-message {
     color: #4cae4c;
+}
+.short-input {
+    display: inline-block;
+    width: 60px;
+}
+.phone-price {
+    padding: 15px;
+    font-size: 35px;
+    text-align: right;
+    color: #0d3349;
+}
+.empty-caption {
+    font-size: 20px;
+    color: #2f4f90;
+}
+li .nav {
+    padding-left: 15px;
+}
+li.active>a{
+    background: #eeeeee;
 }
 /* End styles*/

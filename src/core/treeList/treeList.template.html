@@ -1,0 +1,16 @@
+<ul class="nav">
+    <li ng-repeat="(caption, description) in $ctrl.data"
+        ng-class="{active: $ctrl.selectedProp === description.prop}">
+        <a href="javascript:void(0);"
+           class="nav"
+           ng-click="$ctrl.onItemClick(description.prop)">
+            {{ caption }}
+        </a>
+        <tree-list ng-if="description.sub"
+                   ng-show="$ctrl.selectedProp === description.prop"
+                   on-select="$ctrl.onSubSelect(treePoints, description.prop)"
+                   data="description.sub"
+                   selected-prop="$ctrl.innerSelectedProp">
+        </tree-list>
+    </li>
+</ul>
