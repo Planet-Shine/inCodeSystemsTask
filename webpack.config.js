@@ -2,6 +2,7 @@
 
 var NODE_ENV = process.env.NODE_ENV || 'development';
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtendedDefinePlugin = require('extended-define-webpack-plugin');
 var __DEVELOPMENT__ = NODE_ENV !== 'production';
 var path = require('path');
 
@@ -36,15 +37,13 @@ module.exports = {
             {
                 test: /\.(svg|ttf|eot|woff|woff2)$/,
                 loader: 'file?name=asserts/fonts/[name].[ext]'
-            } /*,
-            {
-                test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-                exclude: /\/node_modules\//,
-                loader: 'file?name=[name].[ext]'
-            }*/
+            }
         ]
     },
     plugins: [
-        new ExtractTextPlugin('./asserts/styles.css')
+        new ExtractTextPlugin('./asserts/styles.css'),
+        new ExtendedDefinePlugin({
+            '__DEVELOPMENT__': __DEVELOPMENT__
+        })
     ]
 };
