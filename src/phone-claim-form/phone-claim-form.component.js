@@ -8,18 +8,20 @@ export default phoneDetailsModule
         controller: ['PhoneClaimForm', '$scope', 'Phone', '$timeout', 'Claim', function (PhoneClaimForm, $scope, Phone, $timeout, Claim) {
             const MESSAGE_TIMEOUT = 3000;
             var closeTimeoutPromise;
+
             this.formState = PhoneClaimForm.formState;
             this.phoneName = '';
             this.vkValidationRegExp = /(:?^(http:\/\/|https:\/\/)?(www\.)?vk\.com\/(\w|\d)+?\/?$)|(:?^$)/i;
-            this.closeForm = (claimForm) => {
+            this.closeForm = () => {
                 this.formState.isOpened = false;
             };
-            this.onSubmit = (isValid, claimForm) => {
+            this.onSubmit = (isValid) => {
                 var data;
+
                 this.$submitted = true;
                 if (isValid) {
                     data = Object.assign({}, this.user, {
-                        id : this.formState.phoneId
+                        id: this.formState.phoneId
                     });
                     Claim.createClaim(data).then(() => {
                         $scope.$apply(() => {
