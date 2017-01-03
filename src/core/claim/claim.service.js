@@ -1,5 +1,6 @@
 
 import claimModule from './claim.module';
+import Promise from 'promise-polyfill';
 
 export default claimModule.factory('Claim', function () {
     return {

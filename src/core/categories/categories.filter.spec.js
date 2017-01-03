@@ -5,8 +5,6 @@
 
 describe('categories', function () {
 
-/*
-
     beforeEach(() => {
         angular.mock.module('core');
         jasmine.addCustomEqualityTester(angular.equals);
@@ -15,8 +13,8 @@ describe('categories', function () {
     it('should filter to fetch items with particular value of exact properties', function () {
         angular.mock.inject(function (categoriesFilter) {
 
-            {
-                let input = [
+            (() => {
+                const input = [
                     {
                         id: 4,
                         name: 'Cola',
@@ -55,7 +53,7 @@ describe('categories', function () {
                         },
                         {
                             name: 'isHealthy',
-                            value: false
+                            value: true
                         }
                     ],
                     expectedValue = [
@@ -74,10 +72,10 @@ describe('categories', function () {
                     ];
 
                 expect((categoriesFilter(input, categories))).toEqual(expectedValue);
-            }
+            })();
 
-            {
-                let input = [
+            (() => {
+                const input = [
                     {
                         id: 4,
                         firm: 'Super man',
@@ -151,11 +149,9 @@ describe('categories', function () {
                     ];
 
                 expect((categoriesFilter(input, categories))).toEqual(expectedValue);
-            }
+            })();
 
         });
     });
-
- */
 
 });

@@ -24,11 +24,9 @@ export default treeListModule.component('treeList', {
             });
         };
         $scope.$watch('$ctrl.selectedProp', (newValue) => {
-            // $scope.$apply(() => {
-                if (newValue === null) {
-                    this.innerSelectedProp = null;
-                }
-            // });
+            if (newValue === null) {
+                this.innerSelectedProp = null;
+            }
         });
     }]
 });
