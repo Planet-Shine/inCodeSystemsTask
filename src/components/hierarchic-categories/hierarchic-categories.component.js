@@ -1,18 +1,28 @@
 
 import hierarchicCategoriesModule from './hierarchic-categories.module';
 
+class HierarchicCategoriesController {
+    static $inject = ['Phone'];
+    Phone = null;
+    innerSelectedProp = null;
+    filters = null;
+    constructor(Phone) {
+        this.Phone = Phone;
+        this.innerSelectedProp = null;
+        this.filters = Phone.getCategoryFilters();
+    }
+    onSubSelect (treePoints) {
+        this.Phone.filters.categories = treePoints;
+    }
+    clear () {
+        this.innerSelectedProp = null;
+        this.Phone.filters.categories = [];
+    }
+}
+
+
 export default hierarchicCategoriesModule
     .component('hierarchicCategories', {
         template: require('./hierarchic-categories.template.html'),
-        controller: ['Phone', function (Phone) {
-            this.innerSelectedProp = null;
-            this.filters = Phone.getCategoryFilters();
-            this.onSubSelect = (treePoints) => {
-                Phone.filters.categories = treePoints;
-            };
-            this.clear = () => {
-                this.innerSelectedProp = null;
-                Phone.filters.categories = [];
-            };
-        }]
+        controller: HierarchicCategoriesController
     });

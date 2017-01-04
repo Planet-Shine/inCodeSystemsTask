@@ -1,6 +1,30 @@
 
 import treeListModule from './treeList.module';
 
+class TreeListController {
+    static $inject = ['$scope'];
+    constructor($scope) {
+        $scope.$watch('$ctrl.selectedProp', (newValue) => {
+            if (newValue === null) {
+                this.innerSelectedProp = null;
+            }
+        });
+    }
+    onSubSelect(treePoints, prop) {
+        this.selectedProp = prop;
+        this.onSelect({
+            treePoints: [prop, ...treePoints]
+        });
+    }
+    onItemClick(prop) {
+        this.selectedProp = prop;
+        this.innerSelectedProp = null;
+        this.onSelect({
+            treePoints: [prop]
+        });
+    }
+}
+
 export default treeListModule.component('treeList', {
     bindings: {
         selectedProp: '=',
@@ -8,25 +32,5 @@ export default treeListModule.component('treeList', {
         data: '<'
     },
     template: require('./treeList.template.html'),
-    controller: ['$scope', function ($scope) {
-        this.innerSelectedProp = null;
-        this.onSubSelect = (treePoints, prop) => {
-            this.selectedProp = prop;
-            this.onSelect({
-                treePoints: [prop, ...treePoints]
-            });
-        };
-        this.onItemClick = (prop) => {
-            this.selectedProp = prop;
-            this.innerSelectedProp = null;
-            this.onSelect({
-                treePoints: [prop]
-            });
-        };
-        $scope.$watch('$ctrl.selectedProp', (newValue) => {
-            if (newValue === null) {
-                this.innerSelectedProp = null;
-            }
-        });
-    }]
+    controller: TreeListController
 });
