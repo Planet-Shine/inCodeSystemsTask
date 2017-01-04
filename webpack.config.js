@@ -55,10 +55,8 @@ module.exports = (function makeWebpackConfig() {
      */
     if (isTest) {
         config.devtool = 'inline-source-map';
-    } else if (isProd) {
+    } else if (!isProd) {
         config.devtool = 'source-map';
-    } else {
-        config.devtool = 'eval-source-map';
     }
 
     /**
@@ -152,6 +150,23 @@ module.exports = (function makeWebpackConfig() {
                 '__DEVELOPMENT__': !isProd
             })
         );
+        if (isProd) {
+            config.plugins.push(
+                new webpack.optimize.UglifyJsPlugin({
+                    beautify: false,
+                    comments: false,
+                    compress: {
+                        sequences: true,
+                        booleans: true,
+                        loops: true,
+                        unused: true,
+                        warnings: false,
+                        drop_console: true,
+                        unsafe: true
+                    }
+                })
+            );
+        }
     }
 
     /**
