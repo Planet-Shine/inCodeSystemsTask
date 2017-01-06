@@ -2,10 +2,6 @@
 import hierarchicCategoriesModule from './hierarchic-categories.module';
 
 class HierarchicCategoriesController {
-    static $inject = ['Phone'];
-    Phone = null;
-    innerSelectedProp = null;
-    filters = null;
     constructor(Phone) {
         this.Phone = Phone;
         this.innerSelectedProp = null;
@@ -19,6 +15,7 @@ class HierarchicCategoriesController {
         this.Phone.filters.categories = [];
     }
 }
+HierarchicCategoriesController.$inject = ['Phone'];
 
 
 export default hierarchicCategoriesModule

@@ -2,10 +2,9 @@
 import imageGalleryModule from './image-gallery.module';
 
 class ImageGalleryController {
-    static $inject = ['$scope'];
-    mainImage = null;
-    images = null;
     constructor($scope) {
+        this.images = null;
+        this.mainImage = null;
         $scope.$watch('$ctrl.images', (newValue) => {
             if (newValue && newValue[0]) {
                 this.mainImage = newValue[0];
@@ -32,6 +31,8 @@ class ImageGalleryController {
         this.switchPhoto(1);
     }
 }
+
+ImageGalleryController.$inject = ['$scope'];
 
 imageGalleryModule.component('imageGallery', {
     bindings: {

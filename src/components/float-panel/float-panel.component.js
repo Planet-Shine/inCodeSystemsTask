@@ -2,12 +2,11 @@
 import floatPanelModule from './float-panel.model';
 
 class FloatPanelController {
-    filters = null;
-    static $inject = ['Phone'];
     constructor(Phone) {
         this.filters = Phone.filters;
     }
 }
+FloatPanelController.$inject = ['Phone'];
 
 export default floatPanelModule.component('floatPanel', {
     template: require('./float-panel.template.html'),

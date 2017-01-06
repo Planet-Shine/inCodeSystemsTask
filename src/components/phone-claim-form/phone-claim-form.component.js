@@ -3,18 +3,14 @@ import './phone-claim-form.service';
 import phoneDetailsModule from './phone-claim-form.module';
 
 class PhoneClaimFormController {
-    static $inject = ['PhoneClaimForm', '$scope', 'Phone', '$timeout', 'Claim'];
-    static MESSAGE_TIMEOUT = 3000;
-    Claim = null;
-    formState = null;
-    succeed = null;
-    failed = null;
-    user = null;
-    closeTimeoutPromise = null;
-    $submitted = null;
-    phoneName = '';
-    vkValidationRegExp = /(:?^(http:\/\/|https:\/\/)?(www\.)?vk\.com\/(\w|\d)+?\/?$)|(:?^$)/i;
     constructor(PhoneClaimForm, $scope, Phone, $timeout, Claim) {
+        this.succeed = null;
+        this.failed = null;
+        this.user = null;
+        this.closeTimeoutPromise = null;
+        this.$submitted = null;
+        this.phoneName = '';
+        this.vkValidationRegExp = /(:?^(http:\/\/|https:\/\/)?(www\.)?vk\.com\/(\w|\d)+?\/?$)|(:?^$)/i;
         this.Claim = Claim;
         this.$timeout = $timeout;
         this.$scope = $scope;
@@ -32,10 +28,10 @@ class PhoneClaimFormController {
             }
         });
     }
-    closeForm () {
+    closeForm() {
         this.formState.isOpened = false;
     }
-    onSubmit (isValid) {
+    onSubmit(isValid) {
         var data;
 
         this.$submitted = true;
@@ -54,7 +50,7 @@ class PhoneClaimFormController {
             });
         }
     }
-    clear () {
+    clear() {
         this.$submitted = false;
         this.succeed = false;
         this.failed = false;
@@ -67,6 +63,9 @@ class PhoneClaimFormController {
     }
 
 }
+
+PhoneClaimFormController.$inject = ['PhoneClaimForm', '$scope', 'Phone', '$timeout', 'Claim'];
+PhoneClaimFormController.MESSAGE_TIMEOUT = 3000;
 
 export default phoneDetailsModule
     .component('phoneClaimForm', {

@@ -2,9 +2,6 @@
 import phoneListModule from './phone-list.module';
 
 class PhoneListController {
-    static $inject = ['Phone', 'PhoneClaimForm'];
-    filters = null;
-    phones = null;
     constructor(Phone, PhoneClaimForm) {
         Phone.loadAll();
         this.filters = Phone.filters;
@@ -15,6 +12,7 @@ class PhoneListController {
         this.PhoneClaimForm.open(phoneId);
     }
 }
+PhoneListController.$inject = ['Phone', 'PhoneClaimForm'];
 
 export default phoneListModule
     .component('phoneList', {

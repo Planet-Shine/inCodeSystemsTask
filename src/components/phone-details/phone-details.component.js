@@ -2,13 +2,10 @@
 import phoneDetailsModule from './phone-details.module';
 
 class PhoneDetailsController {
-    static $inject = ['Phone', '$scope', 'PhoneClaimForm'];
-    PhoneClaimForm = null;
-    Phone = null;
-    phone = null;
     constructor(Phone, $scope, PhoneClaimForm) {
         this.PhoneClaimForm = PhoneClaimForm;
         this.Phone = Phone;
+        this.phone = null;
 
         this.onPhoneIdChanges = this.onPhoneIdChanges.bind(this);
 
@@ -24,6 +21,7 @@ class PhoneDetailsController {
         this.PhoneClaimForm.open(phoneId);
     }
 }
+PhoneDetailsController.$inject = ['Phone', '$scope', 'PhoneClaimForm'];
 
 export default phoneDetailsModule
     .component('phoneDetails', {

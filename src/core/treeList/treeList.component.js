@@ -2,7 +2,6 @@
 import treeListModule from './treeList.module';
 
 class TreeListController {
-    static $inject = ['$scope'];
     constructor($scope) {
         $scope.$watch('$ctrl.selectedProp', (newValue) => {
             if (newValue === null) {
@@ -24,6 +23,7 @@ class TreeListController {
         });
     }
 }
+TreeListController.$inject = ['$scope'];
 
 export default treeListModule.component('treeList', {
     bindings: {
