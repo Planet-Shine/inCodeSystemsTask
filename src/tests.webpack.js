@@ -7,4 +7,4 @@ import './polyfill/find'; // Polyfill for PhantomJS.
 
 const context = require.context('./', true, /\.js$/); // (?!(:?^app.js$))&
 
-context.keys().filter((key) => !/(:?app.js$)|(:?tests.webpack.js$)/.test(key)).forEach(context);
+context.keys().filter((key) => key && !/(:?app.js$)|(:?tests.webpack.js$)/.test(key)).forEach(context);

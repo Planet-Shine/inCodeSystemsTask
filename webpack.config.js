@@ -34,7 +34,7 @@ module.exports = (function makeWebpackConfig() {
      */
     config.entry = isTest ? {} : './app.js';
 
-    config.watch = isProd ? true : false;
+    config.watch = isProd || isTest ? false : true;
 
     /**
      * Output
