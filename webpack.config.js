@@ -15,6 +15,7 @@ var path = require('path');
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
+var isDemo = (ENV === 'demo-build');
 
 module.exports = (function makeWebpackConfig() {
     /**
@@ -44,11 +45,17 @@ module.exports = (function makeWebpackConfig() {
      * Should be an empty object if it's generating a test build
      * Karma will handle setting it up for you when it's a test build
      */
-    config.output = isTest ? {} : {
-        path: path.join(__dirname, '/app'),
-        publicPath: '/',
-        filename: 'build.js'
-    };
+    config.output =
+        isTest ? {} :
+        isDemo ? {
+            path: path.join(__dirname, '/app'),
+            publicPath: '/experiences/phone-catalog/',
+            filename: 'build.js'
+        } : {
+            path: path.join(__dirname, '/app'),
+            publicPath: '/',
+            filename: 'build.js'
+        };
 
     /**
      * Devtool
@@ -57,6 +64,8 @@ module.exports = (function makeWebpackConfig() {
      */
     if (isTest) {
         config.devtool = 'inline-source-map';
+    } else if (isDemo) {
+        config.devtool = null;
     } else if (!isProd) {
         config.devtool = 'source-map';
     }

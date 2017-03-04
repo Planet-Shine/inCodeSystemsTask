@@ -24,7 +24,10 @@ export default (corePhoneModule) => {
                         return categoryFilters;
                     },
                     loadAll: function () {
-                        this.phones = $resource('phones/:phoneId.json', {}, {
+                        this.phones = $resource('phones/:phoneId.json', { phoneId: '@id' }, {
+                            save: {
+                                params: { phoneId: '@id' }
+                            },
                             query: {
                                 method: 'GET',
                                 params: { phoneId: 'phones' },
@@ -33,7 +36,10 @@ export default (corePhoneModule) => {
                         }).query();
                     },
                     loadById: function (phoneId) {
-                        this.phone = $resource('phones/:phoneId.json', {}, {
+                        this.phone = $resource('phones/:phoneId.json', { phoneId: '@id' }, {
+                            save: {
+                                params: { phoneId: '@id' }
+                            },
                             query: {
                                 method: 'GET',
                                 params: { phoneId: 'phones' },

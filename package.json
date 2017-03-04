@@ -73,6 +73,7 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack --bail --progress --profile",
     "dev-build": "./node_modules/.bin/webpack --bail --progress --profile",
+    "demo-build": "./node_modules/.bin/webpack --bail --progress --profile",
     "test": "./node_modules/.bin/karma start",
     "test-watch": "./node_modules/.bin/karma start --auto-watch --no-single-run",
     "server": "./node_modules/.bin/statik --port 3038 ./app",
